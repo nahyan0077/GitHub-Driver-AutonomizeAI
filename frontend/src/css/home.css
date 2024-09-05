@@ -1,0 +1,21 @@
+
+.input-section {
+    display: flex; 
+    justify-content: center; 
+    background-color: #f9f9f9; 
+    padding: 20px;
+}
+
+
+.input {
+    width: 50%; 
+    max-width: 400px; 
+    min-width: 200px; 
+    
+}
+
+.button-section{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}

@@ -1,13 +1,11 @@
 import React from 'react';
-import '../css/button.css'; 
+import '../../css/button.css'; 
+import { ButtonProps } from '../../types/ui.types';
 
-interface ButtonProps {
-    text: string; 
-    onClick?: () => void;
-}
 
-export const Button: React.FC<ButtonProps> = ({ text, onClick }) => {
+
+export const Button: React.FC<ButtonProps> = ({ text, onClick, style }) => {
     return (
-        <button className="button" onClick={onClick} >{text} </button>
+        <button className="button" onClick={onClick} style={style} >{text} </button>
     );
 };
