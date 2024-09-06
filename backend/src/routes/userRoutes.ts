@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import { createUserData } from '../controllers/userController'
+import { createUserData, getUsers } from '../controllers/userController'
 
 
 export const userRoutes = () => {
@@ -7,5 +7,8 @@ export const userRoutes = () => {
 
     router.get('/create-user/:username',createUserData)
 
+    router.get('/get-users',getUsers)
+
     return router
+
 }
