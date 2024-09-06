@@ -4,7 +4,7 @@ import { InputField } from '../../ui/InputField/InputField';
 import { Button } from '../../ui/Button/Button';
 import axios from 'axios';
 import { endpoints } from '../../../config/apiEndpoints';
-import { setUserDetails } from '../../../redux/slices';
+import { setRepositories, setUserDetails } from '../../../redux/slices';
 import { useDispatch } from 'react-redux';
 
 export const InputButtonSection: React.FC = () => {
@@ -19,6 +19,9 @@ export const InputButtonSection: React.FC = () => {
     const response = await axios.get(`${endpoints.gitHubData}${inputValue}`)
     console.log(response.data);
     dispatch(setUserDetails(response.data))
+    const repos = await axios.get(`${endpoints.gitHubData}${inputValue}/repos`)
+    console.log(repos);
+    dispatch(setRepositories(repos.data))
     
   };
 
