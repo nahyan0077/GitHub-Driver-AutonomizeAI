@@ -7,6 +7,9 @@ import { endpoints } from '../../../config/apiEndpoints';
 import { setRepositories, setUserDetails } from '../../../redux/slices';
 import { useDispatch } from 'react-redux';
 import { CLIENT_API } from '../../../utils/axios';
+import { toast } from 'sonner';
+
+
 export const InputButtonSection: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
 
@@ -32,12 +35,12 @@ export const InputButtonSection: React.FC = () => {
       if (axios.isAxiosError(error)) {
 
         console.error('Error fetching data:', error.response?.data || error.message);
-        alert(`Error: ${error.response?.data?.message || error.message}`);
+        toast.error(`Error: ${error.response?.data?.message || error.message}`);
 
       } else {
 
         console.error('Unexpected error:', error);
-        alert('An unexpected error occurred.');
+        toast.error('An unexpected error occurred.');
       }
     }
   };
