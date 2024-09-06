@@ -6,9 +6,9 @@ import axios from 'axios';
 import { endpoints } from '../../../config/apiEndpoints';
 import { setRepositories, setUserDetails } from '../../../redux/slices';
 import { useDispatch } from 'react-redux';
-
 export const InputButtonSection: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
+
   const dispatch = useDispatch()
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -17,11 +17,12 @@ export const InputButtonSection: React.FC = () => {
   const handleSubmit = async () => {
     console.log(inputValue); 
     const response = await axios.get(`${endpoints.gitHubData}${inputValue}`)
-    console.log(response.data);
     dispatch(setUserDetails(response.data))
+    console.log(response.data);
+    
     const repos = await axios.get(`${endpoints.gitHubData}${inputValue}/repos`)
-    console.log(repos);
     dispatch(setRepositories(repos.data))
+    console.log(repos.data);
     
   };
 
@@ -34,7 +35,7 @@ export const InputButtonSection: React.FC = () => {
       <div className="input-section">
         <InputField  onChange={handleInputChange} value={inputValue} />
       <div className="button-section">
-        <Button text="Search" onClick={handleSubmit} style={{ backgroundColor: 'blue' }} />
+        <Button text="Search" onClick={handleSubmit}  style={{ backgroundColor: 'blue' }} />
         <Button text="Clear" onClick={handleClear}  style={{ backgroundColor: 'red' }}  />
       </div>
       </div>
