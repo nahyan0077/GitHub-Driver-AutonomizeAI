@@ -6,14 +6,12 @@ import './FollowersList.css'
 
 export const FollowersList:  React.FC = () => {
     const params = useParams()
-    console.log(`${endpoints.gitHubData}/${params.userName}/followers`);
     const [followers, setFollower] = useState([])
     const navigate = useNavigate()
     
     useEffect(()=>{
         async function fetchFollowers() {
             const response = await axios.get(`${endpoints.gitHubData}${params.userName}/followers`)
-            console.log("followers",response);
             setFollower(response.data) 
         }
         fetchFollowers()

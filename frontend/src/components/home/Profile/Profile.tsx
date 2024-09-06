@@ -22,8 +22,9 @@ export const Profile: React.FC = () => {
         <h2>{githubData.userDetails.name || 'John Doe'}</h2>
         <p>{githubData.userDetails.bio || 'Full Stack Developer with a passion for open-source.'}</p>
         <div className='follow-section' >
-          <Button text='followers' onClick={()=>navigate(`/followers/${githubData.userDetails.login}`)} style={{backgroundColor:"gray"}} />
-          <Button text='following'  style={{backgroundColor:"gray"}} />
+          <Button text={`followers  ${githubData.userDetails.followers}`} onClick={()=>navigate(`/followers/${githubData.userDetails.username}`)} style={{backgroundColor:"teal"}} />
+          <Button text={`following  ${githubData.userDetails.following}`}  style={{backgroundColor:"green"}} />
+
         </div>
       </div>
     </div>
