@@ -20,7 +20,11 @@ export const FollowersList:  React.FC = () => {
     },[])
 
   return (
-    <>   
+    <>
+    <div className='followers-header' >
+
+        <h2> Followers </h2>
+    </div>
         <div className='followers' >
             {
             followers.map((data: any, index) =>{
