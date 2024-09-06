@@ -6,6 +6,7 @@ import axios from 'axios';
 import { endpoints } from '../../../config/apiEndpoints';
 import { setRepositories, setUserDetails } from '../../../redux/slices';
 import { useDispatch } from 'react-redux';
+import { CLIENT_API } from '../../../utils/axios';
 export const InputButtonSection: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
 
@@ -18,11 +19,14 @@ export const InputButtonSection: React.FC = () => {
     console.log(inputValue); 
     const response = await axios.get(`${endpoints.gitHubData}${inputValue}`)
     dispatch(setUserDetails(response.data))
-    console.log(response.data);
+
+    const res = await CLIENT_API.get(`/get-user/${inputValue}`)
+    console.log(res);
+    
     
     const repos = await axios.get(`${endpoints.gitHubData}${inputValue}/repos`)
     dispatch(setRepositories(repos.data))
-    console.log(repos.data);
+
     
   };
 
