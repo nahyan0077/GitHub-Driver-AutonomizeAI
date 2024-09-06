@@ -1,0 +1,30 @@
+
+.profile-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .profile-section {
+    max-width: 400px; 
+    text-align: center;
+  }
+  
+  .profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  .follow-section{
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    padding: 10px;
+  }
+  

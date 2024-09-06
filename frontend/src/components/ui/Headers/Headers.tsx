@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../css/header.css'
+import './Headers.css'
 
 export const Headers: React.FC = () => {
   return (

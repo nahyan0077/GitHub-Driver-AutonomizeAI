@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../css/button.css'; 
-import { ButtonProps } from '../../types/ui.types';
+import './Button.css'; 
+import { ButtonProps } from '../../../types/ui.types';
 
 
 

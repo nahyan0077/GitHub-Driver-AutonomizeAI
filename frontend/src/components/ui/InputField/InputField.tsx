@@ -1,6 +1,6 @@
 import React from 'react'
-import '../../css/input.css'
-import { InputFieldProps } from '../../types/ui.types'
+import './InputField.css'
+import { InputFieldProps } from '../../../types/ui.types'
 
 
 
