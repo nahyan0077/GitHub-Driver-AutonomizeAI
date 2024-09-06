@@ -13,7 +13,6 @@ export interface UserInterface  {
   bio?: string;
   followers?: number;
   following?: number;
-  friends?: string[];
   deleted: boolean;
   created_at?: string;
   updated_at?: string;
@@ -43,7 +42,6 @@ const userSchema = new Schema({
   },
   email: {
     type: String,
-    unique: true,
   },
   bio: {
     type: String,
@@ -53,9 +51,6 @@ const userSchema = new Schema({
   },
   following: {
     type: Number,
-  },
-  friends: {
-    type: [String],
   },
   deleted: {
     type: Boolean,

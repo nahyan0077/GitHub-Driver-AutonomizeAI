@@ -19,11 +19,11 @@ export const InputButtonSection: React.FC = () => {
     try {
 
       const res = await CLIENT_API.get(`/user/get-user/${inputValue}`);
-      console.log("client", res);
+      // console.log("client", res);
   
 
-      const response = await axios.get(`${endpoints.gitHubData}${inputValue}`);
-      dispatch(setUserDetails(response.data));
+      // const response = await axios.get(`${endpoints.gitHubData}${inputValue}`);
+      dispatch(setUserDetails(res.data));
   
       const repos = await axios.get(`${endpoints.gitHubData}${inputValue}/repos`);
       dispatch(setRepositories(repos.data));
@@ -33,9 +33,9 @@ export const InputButtonSection: React.FC = () => {
 
         console.error('Error fetching data:', error.response?.data || error.message);
         alert(`Error: ${error.response?.data?.message || error.message}`);
-        
+
       } else {
-    
+
         console.error('Unexpected error:', error);
         alert('An unexpected error occurred.');
       }
