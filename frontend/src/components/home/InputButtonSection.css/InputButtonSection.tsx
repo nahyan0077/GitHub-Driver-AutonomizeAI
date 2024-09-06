@@ -21,7 +21,7 @@ export const InputButtonSection: React.FC = () => {
   const handleSubmit = async () => {
     try {
 
-      const res = await CLIENT_API.get(`/user/get-user/${inputValue}`);
+      const res = await CLIENT_API.get(`/user/create-user/${inputValue}`);
       // console.log("client", res);
   
 
