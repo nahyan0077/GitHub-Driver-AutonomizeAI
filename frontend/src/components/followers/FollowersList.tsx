@@ -12,10 +12,15 @@ export const FollowersList:  React.FC = () => {
     useEffect(()=>{
         async function fetchFollowers() {
             const response = await axios.get(`${endpoints.gitHubData}${params.userName}/followers`)
+            console.log("rdddddd",response);
+            
             setFollower(response.data) 
         }
         fetchFollowers()
     },[])
+
+    console.log(followers,"sdfsd");
+    
 
   return (
     <>

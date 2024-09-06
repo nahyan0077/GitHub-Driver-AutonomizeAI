@@ -11,7 +11,6 @@ export const FollowerProfile: React.FC = () => {
     useEffect(()=>{
         const followerData = async () => {
             const res = await axios.get(`${endpoints.gitHubData}${params.userName}`)
-            console.log(res);
             setFollowerData(res.data)
         }
         followerData()

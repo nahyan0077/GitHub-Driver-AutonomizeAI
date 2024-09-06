@@ -53,20 +53,28 @@ export const createUserData = async (req: Request, res: Response, next: NextFunc
     }
 }
 
-export const getUsers = async (req: Request, res: Response, next: NextFunction) =>{
+export const getUsers = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        
-        const result = await UserModel.find()
+      const { page = 1, limit = 10, search = '' } = req.query;
+  
+      const pageNumber = Number(page);
+      const limitNumber = Number(limit);
+  
+      const searchQuery = search  ? { name: { $regex: search, $options: 'i' },} : {};
 
-        if (result) {
-            res.status(200).json(result)
-        }
+      const users = await UserModel.find(searchQuery).skip((pageNumber - 1) * limitNumber).limit(limitNumber);
+  
+      const total = await UserModel.countDocuments(searchQuery);
+  
+      res.status(200).json({  users, total, page: pageNumber, limit: limitNumber});
 
     } catch (error: any) {
-        console.error('Error fetching user data:', error);
-        return res.status(500).json({ message: 'Internal server error', error: error.message });
+
+      console.error('Error fetching user data:', error);
+      return res.status(500).json({ message: 'Internal server error', error: error.message });
+      
     }
-}
+  };
 
 export const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
     try {

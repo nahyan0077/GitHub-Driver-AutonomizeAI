@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { CLIENT_API } from '../../utils/axios';
-import './UsersList.css'
+import './UsersList.css';
 import { Button } from '../ui/Button/Button';
 import { toast } from 'sonner';
+import { InputField } from '../ui/InputField/InputField';
 
 interface User {
   _id: string;
@@ -15,15 +16,24 @@ interface User {
 
 export const UsersList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
+  const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+  const [total, setTotal] = useState(0);
+  const [sort, setSort] = useState('name');
+  const [order, setOrder] = useState('asc');
 
   useEffect(() => {
     fetchAllUsers();
-  }, []);
-  
+  }, [page, search, sort, order]);
+
   async function fetchAllUsers() {
     try {
-      const res = await CLIENT_API.get('/user/get-users');
-      setUsers(res.data);
+      const res = await CLIENT_API.get('/user/get-users', {
+        params: { page, limit, search, sort, order },
+      });
+      setUsers(res.data.users);
+      setTotal(res.data.total);
     } catch (error) {
       console.error('Error fetching users:', error);
     }
@@ -31,21 +41,35 @@ export const UsersList: React.FC = () => {
 
   const handleDelete = async (id: string) => {
     try {
-      
-      if(confirm("Are you sure want to delete this user ?")){
-        const res = await CLIENT_API.delete(`/user/delete-user/${id}`)
-        console.log("delete  ",res);
-        toast.success(res.data.message)
+      if (confirm('Are you sure you want to delete this user?')) {
+        const res = await CLIENT_API.delete(`/user/delete-user/${id}`);
+        toast.success(res.data.message);
         fetchAllUsers();
       }
     } catch (error: any) {
-      console.error('Error fetching users:', error);
-      toast.error(error)
+      console.error('Error deleting user:', error);
+      toast.error(error.message);
     }
-  }
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+  };
+
+
 
   return (
     <div className='table-section'>
+      <InputField
+        type='text'
+        placeholder='Search users...'
+        value={search}
+        onChange={handleSearchChange}
+      />
       <table>
         <thead>
           <tr>
@@ -59,29 +83,40 @@ export const UsersList: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-
-
-          {
-          
-          users.length > 0 ? (
+          {users.length > 0 ? (
             users.map((user, index) => (
               <tr key={user._id}>
-                <td>{index + 1}</td>
-                <td><img src={user.avatar_url} alt={user.name} width="50" height="50" /></td>
-                <td>{user.name || "N/A"}</td>
-                <td>{user.type || "N/A"}</td>
+                <td>{index + 1 + (page - 1) * limit}</td>
+                <td>
+                  <img src={user.avatar_url} alt={user.name} width='50' height='50' />
+                </td>
+                <td>{user.name || 'N/A'}</td>
+                <td>{user.type || 'N/A'}</td>
                 <td>{user.followers}</td>
                 <td>{user.following}</td>
-                <td> <Button onClick={()=>handleDelete(user._id)} text='Delete' style={{backgroundColor:"red"}} /> </td>
+                <td>
+                  <Button onClick={() => handleDelete(user._id)} text='Delete' style={{ backgroundColor: 'red' }} />
+                </td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan={6}>No users found</td>
+              <td colSpan={7}>No users found</td>
             </tr>
           )}
         </tbody>
       </table>
+      <div className='pagination'>
+        {Array.from({ length: Math.ceil(total / limit) }, (_, i) => (
+          <button
+            key={i + 1}
+            onClick={() => handlePageChange(i + 1)}
+            className={page === i + 1 ? 'active' : ''}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
