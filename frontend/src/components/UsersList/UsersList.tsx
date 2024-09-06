@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CLIENT_API } from '../../utils/axios';
 import './UsersList.css'
 import { Button } from '../ui/Button/Button';
+import { toast } from 'sonner';
 
 interface User {
   _id: string;
@@ -16,16 +17,32 @@ export const UsersList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    async function fetchAllUsers() {
-      try {
-        const res = await CLIENT_API.get('/user/get-users');
-        setUsers(res.data);
-      } catch (error) {
-        console.error('Error fetching users:', error);
-      }
-    }
     fetchAllUsers();
   }, []);
+  
+  async function fetchAllUsers() {
+    try {
+      const res = await CLIENT_API.get('/user/get-users');
+      setUsers(res.data);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  }
+
+  const handleDelete = async (id: string) => {
+    try {
+      
+      if(confirm("Are you sure want to delete this user ?")){
+        const res = await CLIENT_API.delete(`/user/delete-user/${id}`)
+        console.log("delete  ",res);
+        toast.success(res.data.message)
+        fetchAllUsers();
+      }
+    } catch (error: any) {
+      console.error('Error fetching users:', error);
+      toast.error(error)
+    }
+  }
 
   return (
     <div className='table-section'>
@@ -55,7 +72,7 @@ export const UsersList: React.FC = () => {
                 <td>{user.type || "N/A"}</td>
                 <td>{user.followers}</td>
                 <td>{user.following}</td>
-                <td> <Button text='Delete' style={{backgroundColor:"red"}} /> </td>
+                <td> <Button onClick={()=>handleDelete(user._id)} text='Delete' style={{backgroundColor:"red"}} /> </td>
               </tr>
             ))
           ) : (
