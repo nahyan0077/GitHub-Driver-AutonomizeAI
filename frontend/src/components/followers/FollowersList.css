@@ -1,0 +1,26 @@
+.followers{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto auto;
+    gap: 50px;
+    padding: 20px;
+}
+
+.followers-list img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 1px solid;
+}
+
+.followers-list{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}

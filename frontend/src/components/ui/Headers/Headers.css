@@ -3,8 +3,7 @@
     justify-content: space-around;
     align-items: center; 
     height: 60px; 
-    background-color: rgb(30, 34, 54);
-    color: white;
+    background-color: rgb(95, 94, 27);
     font-family: Arial, sans-serif; 
     padding: 0 20px;
 }
@@ -12,4 +11,6 @@
 .header h1 {
     margin: 0; 
     font-size: 24px; 
+    background-color: transparent;
+    color: burlywood;
 }

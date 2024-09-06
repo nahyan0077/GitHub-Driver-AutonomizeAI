@@ -1,7 +1,8 @@
 import './App.css'
-import SingleRepo from './components/repository/singleRepo/SingleRepo'
 import { Home } from './pages/Home/Home'
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom'
+import { Repo } from './pages/Repo/Repo'
+import { FollowersPage } from './pages/FollowersPage/FollowersPage'
 
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/single-repos/:repoName' element={<SingleRepo />} />
+        <Route path='/single-repos/:repoName' element={<Repo />} />
+        <Route path='/followers/:userName' element={<FollowersPage />} />
       </Routes>
 
     </Router>
