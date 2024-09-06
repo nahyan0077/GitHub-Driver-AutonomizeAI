@@ -16,16 +16,17 @@ export const InputButtonSection: React.FC = () => {
   };
 
   const handleSubmit = async () => {
+    
+      const res = await CLIENT_API.get(`/user/get-user/${inputValue}`)
+      console.log("cliie",res);
     console.log(inputValue); 
     const response = await axios.get(`${endpoints.gitHubData}${inputValue}`)
     dispatch(setUserDetails(response.data))
-
-    const res = await CLIENT_API.get(`/get-user/${inputValue}`)
-    console.log(res);
     
     
     const repos = await axios.get(`${endpoints.gitHubData}${inputValue}/repos`)
     dispatch(setRepositories(repos.data))
+
 
     
   };
