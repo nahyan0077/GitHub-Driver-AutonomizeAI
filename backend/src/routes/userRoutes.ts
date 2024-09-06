@@ -1,11 +1,11 @@
 import {Router} from 'express'
-import { getUserData } from '../controllers/userController'
+import { createUserData } from '../controllers/userController'
 
 
 export const userRoutes = () => {
     const router = Router()
 
-    router.get('/get-user/:username',getUserData)
+    router.get('/create-user/:username',createUserData)
 
     return router
 }

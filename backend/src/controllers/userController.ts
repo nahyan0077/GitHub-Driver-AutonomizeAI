@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { UserInterface, UserModel } from "../models/userModel";
 import axios from "axios";
 
-export const getUserData = async (req: Request, res: Response, next: NextFunction) => {
+export const createUserData = async (req: Request, res: Response, next: NextFunction) => {
     const { username } = req.params;
     
     try {
