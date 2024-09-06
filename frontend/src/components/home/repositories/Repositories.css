@@ -1,5 +1,5 @@
 .repo-section{
-    display: grid;
+    display: grid !important;
     justify-content: center;
     grid-template-columns: auto auto auto;
     gap: 10px;

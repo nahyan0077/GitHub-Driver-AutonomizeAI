@@ -22,7 +22,7 @@ export const SingleRepo: React.FC = () => {
     async function fetchRepo() {
       try {
         const response = await axios.get(
-          `${endpoints.gitSingleRepo}${githubData.userDetails.login}/${params.repoName}`
+          `${endpoints.gitSingleRepo}${githubData.userDetails.username}/${params.repoName}`
         );
         setRepo({
           name: response.data.name,

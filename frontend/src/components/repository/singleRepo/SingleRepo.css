@@ -23,6 +23,9 @@
 
 .repo-section {
   margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .repo-section p {
