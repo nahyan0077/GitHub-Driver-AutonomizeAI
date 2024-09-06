@@ -16,19 +16,30 @@ export const InputButtonSection: React.FC = () => {
   };
 
   const handleSubmit = async () => {
-    
-      const res = await CLIENT_API.get(`/user/get-user/${inputValue}`)
-      console.log("cliie",res);
-    console.log(inputValue); 
-    const response = await axios.get(`${endpoints.gitHubData}${inputValue}`)
-    dispatch(setUserDetails(response.data))
-    
-    
-    const repos = await axios.get(`${endpoints.gitHubData}${inputValue}/repos`)
-    dispatch(setRepositories(repos.data))
+    try {
 
+      const res = await CLIENT_API.get(`/user/get-user/${inputValue}`);
+      console.log("client", res);
+  
 
+      const response = await axios.get(`${endpoints.gitHubData}${inputValue}`);
+      dispatch(setUserDetails(response.data));
+  
+      const repos = await axios.get(`${endpoints.gitHubData}${inputValue}/repos`);
+      dispatch(setRepositories(repos.data));
+      
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+
+        console.error('Error fetching data:', error.response?.data || error.message);
+        alert(`Error: ${error.response?.data?.message || error.message}`);
+        
+      } else {
     
+        console.error('Unexpected error:', error);
+        alert('An unexpected error occurred.');
+      }
+    }
   };
 
   const handleClear = () => {
