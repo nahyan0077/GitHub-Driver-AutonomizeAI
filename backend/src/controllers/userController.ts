@@ -69,10 +69,8 @@ export const getUsers = async (req: Request, res: Response, next: NextFunction) 
       res.status(200).json({  users, total, page: pageNumber, limit: limitNumber});
 
     } catch (error: any) {
-
       console.error('Error fetching user data:', error);
       return res.status(500).json({ message: 'Internal server error', error: error.message });
-      
     }
   };
 
