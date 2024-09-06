@@ -18,19 +18,17 @@ export const UsersList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
   const [total, setTotal] = useState(0);
-  const [sort, setSort] = useState('name');
-  const [order, setOrder] = useState('asc');
+  const limit = 5
 
   useEffect(() => {
     fetchAllUsers();
-  }, [page, search, sort, order]);
+  }, [page, search]);
 
   async function fetchAllUsers() {
     try {
       const res = await CLIENT_API.get('/user/get-users', {
-        params: { page, limit, search, sort, order },
+        params: { page, limit, search},
       });
       setUsers(res.data.users);
       setTotal(res.data.total);
