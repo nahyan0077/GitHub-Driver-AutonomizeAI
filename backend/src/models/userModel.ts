@@ -1,9 +1,9 @@
 import { model, Schema } from "mongoose";
 
 
-interface UserInterface  {
+export interface UserInterface  {
   username: string;
-  _id: string;
+  _id?: string;
   avatar_url: string;
   type: string;
   repos_url: string;
@@ -15,10 +15,9 @@ interface UserInterface  {
   following?: number;
   friends?: string[];
   deleted: boolean;
-  created_at: string;
-  updated_at: string;
+  created_at?: string;
+  updated_at?: string;
 }
-
 
 
 const userSchema = new Schema({
@@ -26,10 +25,6 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
-  },
-  _id: {
-    type: String,
-    required: true,
   },
   avatar_url: {
     type: String,
@@ -68,11 +63,9 @@ const userSchema = new Schema({
   },
   created_at: {
     type: String,
-    required: true,
   },
   updated_at: {
     type: String,
-    required: true,
   },
 });
 
