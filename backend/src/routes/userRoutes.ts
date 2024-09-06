@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import { createUserData, getUsers } from '../controllers/userController'
+import { createUserData, deleteUser, getUsers } from '../controllers/userController'
 
 
 export const userRoutes = () => {
@@ -8,6 +8,8 @@ export const userRoutes = () => {
     router.get('/create-user/:username',createUserData)
 
     router.get('/get-users',getUsers)
+
+    router.delete('/delete-user/:id',deleteUser)
 
     return router
 

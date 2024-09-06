@@ -70,9 +70,9 @@ export const getUsers = async (req: Request, res: Response, next: NextFunction) 
 
 export const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { _id } = req.params 
+        const { id } = req.params 
 
-        const result = await UserModel.deleteOne({_id})
+        const result = await UserModel.deleteOne({_id: id})
 
         if (result.deletedCount > 0) {
             return res.status(200).json({ message: 'User successfully deleted' });
