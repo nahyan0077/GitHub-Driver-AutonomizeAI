@@ -16,6 +16,7 @@ export const Home: React.FC = () => {
       {
         Object.keys(githubData.userDetails).length ? (
           <>
+          
           <Profile />
           <Repositories />
           </>
