@@ -6,6 +6,7 @@ import { FollowersPage } from './pages/FollowersPage/FollowersPage'
 import { FollowerProfilePage } from './pages/FollowerProfilePage/FollowerProfilePage'
 import { AllUsers } from './pages/AllUsers/AllUsers'
 
+console.log(import.meta.env.VITE_BASE_URL);
 
 
 function App() {
