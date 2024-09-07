@@ -14,7 +14,7 @@ export const createUserData = async (req: Request, res: Response, next: NextFunc
         } else {
 
             try {
-                const result = await axios.get(`https://api.github.com/users/${username}`);
+                const result = await axios.get(`https://api.github.com/users/${username}`,{timeout:10000});
 
                 console.log("test  ",result);
                 
