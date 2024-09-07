@@ -15,6 +15,9 @@ export const createUserData = async (req: Request, res: Response, next: NextFunc
 
             try {
                 const result = await axios.get(`https://api.github.com/users/${username}`);
+
+                console.log("test  ",result);
+                
                 
                 const userData: UserInterface = {
                     username: result.data.login,
