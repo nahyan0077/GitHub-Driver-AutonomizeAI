@@ -1,4 +1,4 @@
 export const endpoints = {
-    gitHubData: "https://api.github.com/users/",
-    gitSingleRepo: "https://api.github.com/repos/"
+    gitHubData: import.meta.env.VITE_GITHUB_DATA ,
+    gitSingleRepo: import.meta.env.VITE_GITHUB_SINGLE_REPO 
 } 
