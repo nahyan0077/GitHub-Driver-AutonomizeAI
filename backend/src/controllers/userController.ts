@@ -14,10 +14,11 @@ export const createUserData = async (req: Request, res: Response, next: NextFunc
         } else {
 
             try {
-                const result = await axios.get(`https://api.github.com/users/${username}`,{timeout:10000});
-
-                console.log("test  ",result);
-                
+                const result = await axios.get(`https://api.github.com/users/${username}`, {
+                    headers: {
+                        Authorization: `token ${process.env.GITHUB_TOKEN}`,
+                    },
+                });                
                 
                 const userData: UserInterface = {
                     username: result.data.login,
