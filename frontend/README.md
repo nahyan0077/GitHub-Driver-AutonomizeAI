@@ -1,50 +1,68 @@
-# React + TypeScript + Vite
+# GitHub Driver Autonomize AI - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the frontend codebase for the GitHub Driver Autonomize AI application. The frontend is built using **React** with **Vite**, providing a responsive and user-friendly interface to interact with the backend APIs.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Installation](#installation)
+- [Running the Frontend](#running-the-frontend)
+- [Features](#features)
+- [Deployment](#deployment)
+- [Usage](#usage)
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To set up the frontend, follow these steps:
 
-- Configure the top-level `parserOptions` property like this:
+1. **Clone the repository** to your local machine:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+    ```bash
+    git clone https://github.com/nahyan0077/GitHub-Driver-AutonomizeAI.git
+    ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. **Navigate to the frontend directory:**
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+    ```bash
+    cd frontend/
+    ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+3. **Install dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+## Running the Frontend
+
+4. **Start the development server:**
+
+    ```bash
+    npm run dev
+    ```
+
+The application will be available at [http://localhost:5173](http://localhost:5173).
+
+## Features
+
+- **Create or Fetch GitHub User Data**: Search for GitHub users and display their profile data.
+- **Manage Users**: View, update, and delete users from the frontend.
+- **Responsive Design**: The interface is designed to be responsive and user-friendly on various devices.
+
+## Deployment
+
+Access the deployed frontend application using the link below:
+
+[Frontend App on Vercel](https://github-driver.vercel.app/) 
+
+
+## Usage
+
+Once the frontend server is running, you can interact with the application to:
+
+- **Search GitHub Users**: Enter a GitHub username to fetch and display user details.
+- **View and Manage Users**: List, update, or delete users directly from the frontend.
+- **Soft Delete Users**: Users can be deleted with a single click, maintaining data integrity.
+
+---
+
+This README provides a clear guide on setting up, running, and utilizing the frontend application, ensuring an optimal experience for developers and users alike.
