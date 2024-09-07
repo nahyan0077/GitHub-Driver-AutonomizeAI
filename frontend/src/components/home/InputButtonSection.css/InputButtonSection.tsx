@@ -22,7 +22,7 @@ export const InputButtonSection: React.FC = () => {
     try {
 
       const res = await CLIENT_API.get(`/user/create-user/${inputValue}`);
-      // console.log("client", res);
+
   
 
       // const response = await axios.get(`${endpoints.gitHubData}${inputValue}`);
