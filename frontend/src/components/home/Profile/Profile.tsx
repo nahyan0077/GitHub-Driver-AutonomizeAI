@@ -15,12 +15,13 @@ export const Profile: React.FC = () => {
     <div className="profile-box">
       <div className="profile-section">
         <img
-          src={githubData.userDetails.avatar_url || 'https://via.placeholder.com/150'}
-          alt={githubData.userDetails.name || 'User'}
+          src={githubData.userDetails.avatar_url}
+          alt={githubData.userDetails.name}
           className="profile-image"
         />
-        <h2>{githubData.userDetails.name || 'John Doe'}</h2>
-        <p>{githubData.userDetails.bio || 'Full Stack Developer with a passion for open-source.'}</p>
+        <h2>{githubData.userDetails.name}</h2>
+        <p>{githubData.userDetails.bio }</p>
+        <p>{githubData.userDetails.location}</p>
         <div className='follow-section' >
           <Button text={`followers  ${githubData.userDetails.followers}`} onClick={()=>navigate(`/followers/${githubData.userDetails.username}`)} style={{backgroundColor:"teal"}} />
           <Button text={`following  ${githubData.userDetails.following}`}  style={{backgroundColor:"green"}} />

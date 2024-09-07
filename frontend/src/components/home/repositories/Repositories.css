@@ -1,16 +1,17 @@
 .repo-section{
     display: grid !important;
     justify-content: center;
-    grid-template-columns: auto auto auto;
-    gap: 10px;
+    grid-template-columns: auto auto auto auto;
+    gap: 16px;
     padding: 20px;
 }
 
 .repo-box{
     padding: 20px;
-    background-color: rgb(229, 238, 133);
+    background-color: rgb(11, 38, 84);
     border-radius: 5px;
-    border: 1px solid;
+    border: 1px solid gray;
     text-align: center;
     cursor: pointer;
+    color: white;
 }

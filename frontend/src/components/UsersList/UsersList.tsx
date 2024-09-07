@@ -70,7 +70,7 @@ export const UsersList: React.FC = () => {
       />
       <table>
         <thead>
-          <tr>
+          <tr className='table-headers' >
             <th>Si.No</th>
             <th>Image</th>
             <th>Name</th>

@@ -3,7 +3,7 @@
     justify-content: space-around;
     align-items: center; 
     height: 60px; 
-    background-color: rgb(95, 94, 27);
+    background-color: #031c35;
     font-family: Arial, sans-serif; 
     padding: 0 20px;
 }
@@ -12,6 +12,6 @@
     margin: 0; 
     font-size: 24px; 
     background-color: transparent;
-    color: rgb(255, 242, 0);
+    color: rgb(255, 255, 255);
     cursor: pointer;
 }

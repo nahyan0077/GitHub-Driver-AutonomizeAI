@@ -1,7 +1,7 @@
 .followers{
     display: grid;
     justify-content: center;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto auto;
     gap: 50px;
     padding: 20px;
 }
@@ -18,10 +18,17 @@
 .followers-list{
     display: flex;
     flex-direction: column;
-    border: 2px solid;
+    border: 1px solid gray;
     padding: 10px;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     cursor: pointer;
+    color: white;
+}
+
+.followers-header h2 {
+    color: white;
+    padding: 10px;
+    font-size: 30px;
 }

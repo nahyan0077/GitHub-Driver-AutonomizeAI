@@ -21,6 +21,11 @@ export const InputButtonSection: React.FC = () => {
   const handleSubmit = async () => {
     try {
 
+      if(inputValue == ""){
+        toast.error("Input is empty")
+        return
+      }
+
       const res = await CLIENT_API.get(`/user/create-user/${inputValue}`);
 
       console.log(res);
