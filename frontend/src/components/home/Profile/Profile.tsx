@@ -1,6 +1,6 @@
 // components/Profile.tsx
 import React from 'react';
-import './profile.css';
+import './Profile.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { Button } from '../../ui/Button/Button';
