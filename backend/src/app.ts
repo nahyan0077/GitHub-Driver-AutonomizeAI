@@ -23,10 +23,7 @@ app.use(cors({
 
 app.use('/user',userRoutes())
 
-app.get('/',(req,res) =>{
-    console.log("sdf");
-    res.json({he:"hee"})
-}) 
+
 
 app.listen(3000,()=>{
     console.log(`🍃 Server is listening on port ${PORT} 🍃`);

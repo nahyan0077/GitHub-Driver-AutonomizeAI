@@ -19,10 +19,6 @@ app.use((0, cors_1.default)({
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 app.use('/user', (0, userRoutes_1.userRoutes)());
-app.get('/', (req, res) => {
-    console.log("sdf");
-    res.json({ he: "hee" });
-});
 app.listen(3000, () => {
     console.log(`🍃 Server is listening on port ${PORT} 🍃`);
 });
