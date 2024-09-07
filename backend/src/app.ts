@@ -1,9 +1,10 @@
-import express, { Application } from 'express'
+import express, { Application, Request, Response } from 'express'
 import {config} from 'dotenv'
 import database from './config/database'
 import { userRoutes } from './routes/userRoutes'
 import morgan from 'morgan'
 import cors from 'cors'
+import errorMiddleware from './middlewares/errorMiddleware'
 
 config()
 database()
@@ -19,10 +20,18 @@ app.use(cors({
 }))
 
 
-
-
+//routes
 app.use('/user',userRoutes())
 
+
+//Not found handlerss
+app.all("*", (req: Request, res: Response) => {
+    res.status(404).json({ success: false, status: 404, message: "API Not found" });
+});
+  
+
+//error middleware
+app.use(errorMiddleware)
 
 
 app.listen(3000,()=>{
