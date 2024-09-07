@@ -5,8 +5,9 @@ import { Repo } from './pages/Repo/Repo'
 import { FollowersPage } from './pages/FollowersPage/FollowersPage'
 import { FollowerProfilePage } from './pages/FollowerProfilePage/FollowerProfilePage'
 import { AllUsers } from './pages/AllUsers/AllUsers'
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage'
 
-console.log(import.meta.env.VITE_BASE_URL);
+
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='/followers/:userName' element={<FollowersPage />} />
         <Route path='/follower/:userName' element={<FollowerProfilePage />} />
         <Route path='/all-users' element={<AllUsers />} />
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
 
     </Router>

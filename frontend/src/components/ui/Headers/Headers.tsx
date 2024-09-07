@@ -10,7 +10,7 @@ export const Headers: React.FC = () => {
   return (
     <div className='header'  >
         <h1 onClick={()=> navigate('/')} > GitHub Driver </h1>
-        <Button text='Users List' onClick={()=>navigate('/all-users')} style={{backgroundColor:"bisque",color: "black"}} />
+        <Button text='Users List' onClick={()=>navigate('/all-users')} style={{backgroundColor:"beige",color: "black"}} />
     </div>
   )
 }
