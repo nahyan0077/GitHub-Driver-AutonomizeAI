@@ -41,17 +41,17 @@ export const SingleRepo: React.FC = () => {
 
   return (
     <div className="repo">
-      <div className="repo-header">
-        <h2>Repository: {repoData.name}</h2>
-      </div>
-      <div className="repo-section">
-        <p>Description: {repoData.description}</p>
-        <p>Language: {repoData.language}</p>
-        <p>Size: {repoData.size} KB</p>
-        <p>Subscribers: {repoData.subscribers_count}</p>
-        <p>Forks: {repoData.forks_count}</p>
-      </div>
+    <div className="repo-header">
+      <h2>{repoData.name}</h2>
     </div>
+    <div className="repo-section">
+      <p><strong>Description:</strong> {repoData.description}</p>
+      <p><strong>Language:</strong> {repoData.language}</p>
+      <p><strong>Size:</strong> {repoData.size} KB</p>
+      <p><strong>Subscribers:</strong> {repoData.subscribers_count}</p>
+      <p><strong>Forks:</strong> {repoData.forks_count}</p>
+    </div>
+  </div>
   );
 };
 
