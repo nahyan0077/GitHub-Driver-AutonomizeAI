@@ -1,5 +1,5 @@
 import React from "react";
-import './LoadingPopup.css'; 
+import './LoadingPopUp.css'; 
 
 interface LoadingPopupProps {
   isLoading: boolean;
