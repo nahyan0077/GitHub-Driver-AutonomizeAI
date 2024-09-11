@@ -31,8 +31,6 @@ export const InputButtonSection: React.FC = () => {
 
       const res = await CLIENT_API.get(`/user/create-user/${inputValue}`);
 
-      console.log(res);
-      
 
       // const response = await axios.get(`${endpoints.gitHubData}${inputValue}`);
       dispatch(setUserDetails(res.data));
@@ -58,6 +56,12 @@ export const InputButtonSection: React.FC = () => {
     setInputValue('');
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key == 'Enter') {
+      handleSubmit()
+    }
+  } 
+
   if (loading) {
     return <LoadingPopUp isLoading={loading} />
   }
@@ -65,7 +69,7 @@ export const InputButtonSection: React.FC = () => {
   return (
     <div className="input-button-section">
       <div className="input-section">
-        <InputField  onChange={handleInputChange} value={inputValue} placeholder='Search your GitHub username here' />
+        <InputField  onChange={handleInputChange} value={inputValue} placeholder='Search your GitHub username here'  onKeyDown={handleKeyDown} />
       <div className="button-section">
         <Button text="Search" onClick={handleSubmit}  style={{ backgroundColor: 'blue' }} />
         <Button text="Clear" onClick={handleClear}  style={{ backgroundColor: 'red' }}  />

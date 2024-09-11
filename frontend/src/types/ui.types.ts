@@ -9,4 +9,5 @@ export interface InputFieldProps {
     placeholder?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
     value?: string
+    onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void
   } 
