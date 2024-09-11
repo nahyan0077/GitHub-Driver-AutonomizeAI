@@ -20,19 +20,23 @@ export const UsersList: React.FC = () => {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const limit = 5
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     fetchAllUsers();
   }, [page, search]);
 
   async function fetchAllUsers() {
+    setLoading(true)
     try {
       const res = await CLIENT_API.get('/user/get-users', {
         params: { page, limit, search},
       });
       setUsers(res.data.users);
       setTotal(res.data.total);
+      setLoading(false)
     } catch (error) {
+      setLoading(false)
       console.error('Error fetching users:', error);
     }
   }
@@ -99,7 +103,10 @@ export const UsersList: React.FC = () => {
             ))
           ) : (
             <tr>
-              <td colSpan={7}>No users found</td>
+              {
+                loading ? <td colSpan={7}>Loading users...</td> : <td colSpan={7}>No users found</td>
+              }
+    
             </tr>
           )}
         </tbody>

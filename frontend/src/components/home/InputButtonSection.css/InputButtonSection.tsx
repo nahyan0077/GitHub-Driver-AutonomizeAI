@@ -8,10 +8,12 @@ import { setRepositories, setUserDetails } from '../../../redux/slices';
 import { useDispatch } from 'react-redux';
 import { CLIENT_API } from '../../../utils/axios';
 import { toast } from 'sonner';
+import LoadingPopUp from '../../ui/LoadingPopUp/LoadingPopUp';
 
 
 export const InputButtonSection: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
+  const [loading, setLoading] = useState(false)
 
   const dispatch = useDispatch()
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,6 +21,7 @@ export const InputButtonSection: React.FC = () => {
   };
 
   const handleSubmit = async () => {
+    setLoading(true)
     try {
 
       if(inputValue == ""){
@@ -36,15 +39,15 @@ export const InputButtonSection: React.FC = () => {
   
       const repos = await axios.get(`${endpoints.gitHubData}${inputValue}/repos`);
       dispatch(setRepositories(repos.data));
-      
+      setLoading(false)
     } catch (error) {
       if (axios.isAxiosError(error)) {
-
+        setLoading(false)
         console.error('Error fetching data:', error.response?.data || error.message);
         toast.error(`Error: ${error.response?.data?.message || error.message}`);
 
       } else {
-
+        setLoading(false)
         console.error('Unexpected error:', error);
         toast.error('An unexpected error occurred.');
       }
@@ -54,6 +57,10 @@ export const InputButtonSection: React.FC = () => {
   const handleClear = () => {
     setInputValue('');
   };
+
+  if (loading) {
+    return <LoadingPopUp isLoading={loading} />
+  }
 
   return (
     <div className="input-button-section">

@@ -3,18 +3,26 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../ui/Button/Button';
 import axios from 'axios';
 import { endpoints } from '../../config/apiEndpoints';
+import LoadingPopUp from '../ui/LoadingPopUp/LoadingPopUp';
 
 export const FollowerProfile: React.FC = () => {
     const navigate = useNavigate()
     const [followerData, setFollowerData] = useState <any> ({})
     const params = useParams()
+    const [loading, setLoading] = useState(false)
     useEffect(()=>{
-        const followerData = async () => {
-            const res = await axios.get(`${endpoints.gitHubData}${params.userName}`)
-            setFollowerData(res.data)
+      setLoading(true)
+      const followerData = async () => {
+        const res = await axios.get(`${endpoints.gitHubData}${params.userName}`)
+        setFollowerData(res.data)
+        setLoading(false)
         }
         followerData()
     },[])
+
+    if (loading) {
+      return <LoadingPopUp isLoading={loading}  />
+    }
     
   
     return (

@@ -71,7 +71,9 @@ export const getUsers = async (req: Request, res: Response, next: NextFunction) 
   
       const searchQuery = search  ? { name: { $regex: search, $options: 'i' },} : {};
 
-      const users = await UserModel.find(searchQuery).skip((pageNumber - 1) * limitNumber).limit(limitNumber);
+      let skipNumber = (pageNumber - 1) * limitNumber
+
+      const users = await UserModel.find(searchQuery).skip(skipNumber).limit(limitNumber);
   
       const total = await UserModel.countDocuments(searchQuery);
   
