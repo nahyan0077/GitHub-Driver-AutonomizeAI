@@ -64,7 +64,7 @@ export const createUserData = async (req: Request, res: Response, next: NextFunc
 
 export const getUsers = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { page = 1, limit = 10, search = '' } = req.query;
+      const { page = 1, limit = 5, search = '' } = req.query;
   
       const pageNumber = Number(page);
       const limitNumber = Number(limit);

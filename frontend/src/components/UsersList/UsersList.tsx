@@ -109,7 +109,6 @@ export const UsersList: React.FC = () => {
           <button
             key={i + 1}
             onClick={() => handlePageChange(i + 1)}
-            className={page === i + 1 ? 'active' : ''}
           >
             {i + 1}
           </button>

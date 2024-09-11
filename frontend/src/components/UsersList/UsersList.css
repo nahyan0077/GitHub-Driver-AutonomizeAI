@@ -39,3 +39,9 @@ img {
 td img {
   vertical-align: middle;
 }
+.pagination button {
+  background-color: white;
+  padding: 5px;
+  border-radius: 30px;
+  cursor: pointer;
+}
