@@ -56,6 +56,10 @@ export const InputButtonSection: React.FC = () => {
     setInputValue('');
   };
 
+  const handleReset = () => {
+    window.location.reload()
+  }
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key == 'Enter') {
       handleSubmit()
@@ -73,6 +77,7 @@ export const InputButtonSection: React.FC = () => {
       <div className="button-section">
         <Button text="Search" onClick={handleSubmit}  style={{ backgroundColor: 'blue' }} />
         <Button text="Clear" onClick={handleClear}  style={{ backgroundColor: 'red' }}  />
+        <Button text="Reset" onClick={handleReset}  style={{ backgroundColor: 'black' }}  />
       </div>
       </div>
     </div>
